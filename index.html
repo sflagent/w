@@ -88,7 +88,7 @@
         </div>
         <div class="absolute inset-0 bg-pattern"></div>
         <div class="relative z-10 flex flex-col items-center text-center px-6">
-            <p class="text-sm uppercase tracking-[0.3em] text-brand-gold mb-6 font-medium">
+            <p id="intro-subtitle" class="text-sm uppercase tracking-[0.3em] text-brand-gold mb-6 font-medium">
                 Wedding Invitation
             </p>
             <h1 class="font-cinzel text-5xl md:text-7xl text-brand-red mb-10">
@@ -98,7 +98,7 @@
             <button id="btn-open"
                 class="group relative inline-flex items-center justify-center px-8 py-4 bg-brand-red text-white rounded-full overflow-hidden transition-all hover:bg-[#8A0E1D] hover:shadow-lg hover:shadow-red-900/20">
                 <span class="relative z-10 flex items-center tracking-widest uppercase text-sm font-medium">
-                    Open Our Invitation
+                    <span id="intro-btn-text">Open Our Invitation</span>
                     <i data-lucide="arrow-right"
                         class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </span>
@@ -131,10 +131,10 @@
     <!-- --- MAIN CONTENT --- -->
     <div id="main-content" class="transition-opacity duration-1000 delay-500 bg-pattern opacity-0 h-0 overflow-hidden">
 
-        <!-- HERO SECTION -->
-        <section class="min-h-screen flex flex-col items-center justify-center pt-16 pb-16 px-6 text-center relative">
-            <div
-                class="fade-in-section w-56 h-56 md:w-72 md:h-72 rounded-t-full rounded-b-full overflow-hidden border-4 border-brand-gold/30 p-2 mx-auto mb-8 shadow-xl">
+        <div id="invitation-page">
+            <!-- HERO SECTION -->
+            <section class="min-h-screen flex flex-col items-center justify-center pt-16 pb-16 px-6 text-center relative">
+                <div class="fade-in-section w-56 h-56 md:w-72 md:h-72 rounded-t-full rounded-b-full overflow-hidden border-4 border-brand-gold/30 p-2 mx-auto mb-8 shadow-xl">
                 <!-- Placeholder for Couple Photo -->
                 <div
                     class="w-full h-full rounded-t-full rounded-b-full bg-gray-200 object-cover flex items-center justify-center overflow-hidden relative group">
@@ -221,7 +221,7 @@
         </section>
 
         <!-- COUNTDOWN SECTION -->
-        <section class="py-16 bg-brand-red text-white text-center px-6">
+        <section id="countdown-section" class="py-16 bg-brand-red text-white text-center px-6">
             <div class="fade-in-section">
                 <h3 class="font-cinzel text-2xl md:text-3xl mb-10 text-white/90">
                     Counting down to our wedding day (28 Falgun 2082)
@@ -348,8 +348,8 @@
                     <div class="space-y-8 text-gray-700 flex-grow flex flex-col justify-center">
                         <div>
                             <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Parents</p>
-                            <p class="font-medium text-lg">Ranjit Kumar Shrestha</p>
-                            <p class="font-medium text-lg">Anupama Shrestha</p>
+                            <p class="font-medium">Mr. Ranjit Kumar Shrestha</p>
+                            <p class="font-medium">Mrs. Anupama Shrestha</p>
                         </div>
                     </div>
                 </div>
@@ -415,7 +415,7 @@
                             </div>
                             <h4 class="font-cinzel font-semibold text-lg mb-2">Wedding Memories</h4>
                             <p class="text-sm text-gray-500 mb-6">Help us capture the moment. Upload photos here.</p>
-                            <a href="https://drive.google.com/drive/folders/1TxFT293AF1MjSNwsGFCI6KZGncat-esk"
+                            <a href="https://photos.app.goo.gl/yp8QgFAxX8dMRNYy5"
                                 target="_blank" rel="noopener noreferrer"
                                 class="block w-full py-3 rounded-full bg-brand-gold text-white hover:bg-[#C5A028] transition-colors text-sm uppercase tracking-wider font-medium">
                                 Upload Photos
@@ -481,6 +481,163 @@
                 </p>
             </div>
         </footer>
+        </div> <!-- End of Invitation Page -->
+
+        <!-- THANK YOU PAGE (POST-WEDDING) -->
+        <div id="thank-you-page" style="display: none;">
+            <!-- 1. Hero Section -->
+            <section class="min-h-screen flex flex-col items-center justify-center pt-20 pb-16 px-6 text-center relative">
+                <div class="fade-in-section w-48 h-48 md:w-64 md:h-64 rounded-t-full rounded-b-full overflow-hidden border-4 border-brand-gold/30 p-2 mx-auto mb-8 shadow-xl">
+                    <div class="w-full h-full rounded-t-full rounded-b-full bg-gray-200 object-cover flex items-center justify-center overflow-hidden relative group">
+                        <img src="couple_2.PNG" alt="Nhujala and Ankit" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#B11226]/10 mix-blend-overlay"></div>
+                    </div>
+                </div>
+
+                <div class="fade-in-section" style="transition-delay: 200ms;">
+                    <p class="text-sm md:text-base uppercase tracking-[0.2em] text-brand-gold mb-4">
+                        With heartfelt gratitude
+                    </p>
+                    <h2 class="font-cinzel text-6xl md:text-8xl text-brand-red mb-6 leading-tight">
+                        Thank You
+                    </h2>
+                    <h3 class="font-cinzel text-2xl md:text-3xl text-gray-800 mb-6">
+                        Nhujala <span class="text-brand-gold mx-2">&</span> Ankit
+                    </h3>
+                    <p class="text-sm md:text-base tracking-[0.1em] text-gray-600 max-w-xl mx-auto leading-relaxed">
+                        express their sincere thanks to everyone who joined us and blessed our wedding celebration.<br><br>
+                        Your presence, love, and blessings made our special day truly unforgettable.
+                    </p>
+                </div>
+
+                <div class="absolute bottom-10 animate-bounce">
+                    <i data-lucide="chevron-down" class="w-6 h-6 text-brand-gold"></i>
+                </div>
+            </section>
+
+            <!-- 2. Gratitude Message -->
+            <section class="py-20 px-6 max-w-3xl mx-auto text-center">
+                <div class="fade-in-section">
+                    <div class="flex items-center justify-center mb-10">
+                        <div class="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent w-24 md:w-32"></div>
+                        <i data-lucide="heart" class="w-5 h-5 text-brand-gold mx-4 fill-brand-gold"></i>
+                        <div class="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent w-24 md:w-32"></div>
+                    </div>
+                    
+                    <p class="text-lg md:text-xl text-gray-700 leading-loose mb-10 font-medium">
+                        We are deeply grateful to our families, relatives, and friends who traveled, celebrated, and shared this joyful moment with us.
+                        <br><br>
+                        Your love and support made our wedding day a beautiful memory that we will cherish forever.
+                    </p>
+
+                    <p class="text-sm uppercase tracking-widest text-brand-gold mb-4">With love and appreciation,</p>
+                    <p class="font-cinzel text-2xl md:text-3xl text-brand-red">Nhujala & Ankit</p>
+                </div>
+            </section>
+
+            <!-- 3. Family Appreciation -->
+            <section class="py-20 px-6 max-w-5xl mx-auto border-t border-brand-gold/20">
+                <div class="text-center mb-16 fade-in-section">
+                    <h3 class="font-cinzel text-3xl md:text-4xl text-brand-red mb-4">Special thanks</h3>
+                    <p class="text-gray-500 uppercase tracking-widest text-sm">from our families</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-16 md:gap-8">
+                    <!-- Bride's Side -->
+                    <div class="fade-in-section text-center">
+                        <h4 class="font-cinzel text-xl text-brand-red mb-8 pb-4 border-b border-brand-gold/30 inline-block px-8">
+                            Bride's Family (Hosted By)
+                        </h4>
+
+                        <div class="space-y-8 text-gray-700">
+                            <div>
+                                <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Parents</p>
+                                <p class="font-medium">Mr. Roshan Shrestha & Mrs. Rajana Shrestha</p>
+                                <p class="font-medium">Mr. Rabin Shrestha(Father) & Mrs. Leena Pote Shrestha(Mother)</p>
+                                <p class="font-medium">Mr. Captain Ramesh Shrestha & Mrs. Leela Maske</p>
+                            </div>
+
+                            <div>
+                                <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Maternal Grandparents</p>
+                                <p class="font-medium">Mr. Ishwor Lal Pote Shrestha</p>
+                                <p class="font-medium">Mrs. Padmadevi Pote Shrestha</p>
+                            </div>
+
+                            <div>
+                                <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Siblings</p>
+                                <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm md:text-base">
+                                    <span>Dr. Rajat Sainju</span>
+                                    <span class="text-brand-gold">•</span>
+                                    <span>Raunak Sainju</span>
+                                    <span class="text-brand-gold">•</span>
+                                    <span>Supriya Sainju</span>
+                                    <span class="text-brand-gold">•</span>
+                                    <span>Rani Shrestha</span>
+                                    <span class="text-brand-gold">•</span>
+                                    <span>Pratham Shrestha</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Groom's Side -->
+                    <div class="fade-in-section text-center h-full flex flex-col" style="transition-delay: 200ms;">
+                        <h4 class="font-cinzel text-xl text-brand-red mb-8 pb-4 border-b border-brand-gold/30 inline-block px-8">
+                            Groom's Family
+                        </h4>
+
+                        <div class="space-y-8 text-gray-700 flex-grow flex flex-col justify-start">
+                            <div>
+                                <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Parents</p>
+                                <p class="font-medium text-lg">Ranjit Kumar Shrestha</p>
+                                <p class="font-medium text-lg">Anupama Shrestha</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16 fade-in-section">
+                    <p class="text-gray-600 italic">...and all our beloved family members who helped make this celebration possible.</p>
+                </div>
+            </section>
+
+            <!-- 4. Wedding Memories -->
+            <section class="py-24 bg-white border-y border-gray-100 px-6 text-center">
+                <div class="max-w-3xl mx-auto fade-in-section">
+                    <div class="w-16 h-16 rounded-full bg-yellow-50 flex items-center justify-center mx-auto mb-6 text-brand-gold">
+                        <i data-lucide="camera" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-cinzel text-3xl md:text-4xl text-brand-red mb-6">Share Your Wedding Memories</h3>
+                    <p class="text-gray-600 text-lg mb-10 leading-relaxed">
+                        If you captured photos or videos during the celebration, we would love to see them.<br>
+                        Please upload your photos and footage using the link below.
+                    </p>
+                    
+                    <a href="https://photos.app.goo.gl/yp8QgFAxX8dMRNYy5"
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center px-10 py-4 bg-brand-gold text-white rounded-full hover:bg-[#C5A028] transition-colors shadow-lg shadow-yellow-900/10 text-sm uppercase tracking-wider font-semibold">
+                        <i data-lucide="upload-cloud" class="w-5 h-5 mr-3"></i> Upload Wedding Photos
+                    </a>
+                </div>
+            </section>
+
+            <!-- 5. Closing Section -->
+            <footer class="bg-brand-red text-white pt-24 pb-12 px-6 text-center">
+                <div class="fade-in-section max-w-2xl mx-auto">
+                    <p class="text-xl md:text-2xl font-light leading-relaxed mb-12 text-white/95">
+                        Thank you for being part of our journey and for blessing our new beginning together.
+                    </p>
+
+                    <div class="w-16 h-px bg-brand-gold mx-auto mb-10"></div>
+
+                    <p class="text-sm uppercase tracking-widest text-brand-gold mb-4">With gratitude,</p>
+                    <h2 class="font-cinzel text-4xl mb-2 text-brand-gold">Nhujala & Ankit</h2>
+                    <p class="tracking-widest uppercase text-xs opacity-50 mt-10">
+                        Digital Wedding Invitation
+                    </p>
+                </div>
+            </footer>
+        </div> <!-- End of Thank You Page -->
 
     </div>
 
@@ -499,7 +656,31 @@
         const btnShare = document.getElementById('btn-share');
         const btnDownloadCard = document.getElementById('btn-download-card');
 
+        // Added for Conditional Rendering
+        const invitationPage = document.getElementById('invitation-page');
+        const thankYouPage = document.getElementById('thank-you-page');
+        const introSubtitle = document.getElementById('intro-subtitle');
+        const introBtnText = document.getElementById('intro-btn-text');
+
         let isPlaying = false;
+
+        // --- CONDITION TO SHOW INVITATION OR THANK YOU PAGE ---
+        const switchDate = new Date("March 12, 2026 19:30:00").getTime();
+        const currentNow = new Date().getTime();
+
+        if (currentNow >= switchDate) {
+            // Show Thank You Page
+            if (invitationPage) invitationPage.style.display = 'none';
+            if (thankYouPage) thankYouPage.style.display = 'block';
+            if (introSubtitle) introSubtitle.innerText = 'With Heartfelt Gratitude';
+            if (introBtnText) introBtnText.innerText = 'View Memories';
+        } else {
+            // Show Invitation Page
+            if (invitationPage) invitationPage.style.display = 'block';
+            if (thankYouPage) thankYouPage.style.display = 'none';
+            if (introSubtitle) introSubtitle.innerText = 'Wedding Invitation';
+            if (introBtnText) introBtnText.innerText = 'Open Our Invitation';
+        }
 
         // --- ENTRY SCREEN LOGIC ---
         btnOpen.addEventListener('click', () => {
@@ -586,6 +767,7 @@
         // --- COUNTDOWN LOGIC ---
         // 28 Falgun 2082 roughly aligns with March 12, 2026.
         const targetDate = new Date('March 12, 2026 10:30:00').getTime();
+        const countdownSection = document.getElementById('countdown-section');
         const daysEl = document.getElementById('cd-days');
         const hoursEl = document.getElementById('cd-hours');
         const minutesEl = document.getElementById('cd-minutes');
@@ -602,7 +784,14 @@
                 secondsEl.innerText = Math.floor((difference % (1000 * 60)) / 1000);
             } else {
                 clearInterval(countdownInterval);
-                daysEl.innerText = 0; hoursEl.innerText = 0; minutesEl.innerText = 0; secondsEl.innerText = 0;
+                daysEl.innerText = 0;
+                hoursEl.innerText = 0;
+                minutesEl.innerText = 0;
+                secondsEl.innerText = 0;
+
+                if (countdownSection) {
+                    countdownSection.style.display = 'none';
+                }
             }
         }, 1000);
 
