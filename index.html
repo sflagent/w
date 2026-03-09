@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Nhujala & Ankit</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration (optional but good for specific overrides) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#B11226',
+                            gold: '#D4AF37',
+                            cream: '#FDFBF7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B11226' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hide-scroll {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        /* Custom Scroll Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(3rem);
+            transition: opacity 1000ms ease-out, transform 1000ms ease-out;
+            will-change: opacity, visibility;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="font-poppins bg-brand-cream text-gray-800 min-h-screen overflow-x-hidden relative">
+
+    <!-- Audio Element (Hidden) -->
+    <audio id="bg-audio" loop src="wed_dhun.mp3"></audio>
+
+    <!-- --- ENTRY SCREEN --- -->
+    <div id="intro-screen"
+        class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-brand-cream transition-all duration-1000 ease-in-out">
+        <div class="absolute inset-0 bg-pattern"></div>
+        <div class="relative z-10 flex flex-col items-center text-center px-6">
+            <p class="text-sm uppercase tracking-[0.3em] text-brand-gold mb-6 font-medium">
+                Wedding Invitation
+            </p>
+            <h1 class="font-cinzel text-5xl md:text-7xl text-brand-red mb-10">
+                Nhujala <span class="text-brand-gold mx-2">&</span> Ankit
+            </h1>
+
+            <button id="btn-open"
+                class="group relative inline-flex items-center justify-center px-8 py-4 bg-brand-red text-white rounded-full overflow-hidden transition-all hover:bg-[#8A0E1D] hover:shadow-lg hover:shadow-red-900/20">
+                <span class="relative z-10 flex items-center tracking-widest uppercase text-sm font-medium">
+                    Open Our Wedding Invitation
+                    <i data-lucide="arrow-right"
+                        class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </span>
+            </button>
+
+            <div class="mt-16 flex flex-col items-center">
+                <button
+                    class="btn-music flex items-center justify-center w-12 h-12 rounded-full border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white transition-colors mb-3">
+                    <span class="icon-paused block"><i data-lucide="music" class="w-5 h-5"></i></span>
+                    <span class="icon-playing hidden"><i data-lucide="music" class="w-5 h-5 animate-pulse"></i></span>
+                </button>
+                <span class="text-xs uppercase tracking-wider text-gray-500">
+                    Dhun
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- --- FLOATING CONTROLS --- -->
+    <div id="floating-controls"
+        class="fixed bottom-6 right-6 z-40 transition-opacity duration-500 opacity-0 pointer-events-none">
+        <button
+            class="btn-music flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 text-brand-red hover:bg-gray-50 transition-colors"
+            aria-label="Toggle Music">
+            <span class="icon-paused block"><i data-lucide="music" class="w-5 h-5"></i></span>
+            <span class="icon-playing hidden"><i data-lucide="music" class="w-5 h-5 animate-pulse"></i></span>
+        </button>
+    </div>
+
+    <!-- --- MAIN CONTENT --- -->
+    <div id="main-content" class="transition-opacity duration-1000 delay-500 bg-pattern opacity-0 h-0 overflow-hidden">
+
+        <!-- HERO SECTION -->
+        <section class="min-h-screen flex flex-col items-center justify-center pt-20 pb-16 px-6 text-center relative">
+            <div
+                class="fade-in-section w-32 h-32 md:w-48 md:h-48 rounded-t-full rounded-b-full overflow-hidden border-4 border-brand-gold/30 p-2 mx-auto mb-8 shadow-xl">
+                <!-- Placeholder for Couple Photo -->
+                <div
+                    class="w-full h-full rounded-t-full rounded-b-full bg-gray-200 object-cover flex items-center justify-center overflow-hidden relative group">
+                    <img src="couple_2.PNG" alt="Nhujala and Ankit"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-[#B11226]/10 mix-blend-overlay"></div>
+                </div>
+            </div>
+
+            <div class="fade-in-section" style="transition-delay: 200ms;">
+                <p class="text-sm md:text-base uppercase tracking-[0.2em] text-gray-500 mb-4">
+                    Together with our families
+                </p>
+                <h2 class="font-cinzel text-5xl md:text-7xl lg:text-8xl text-brand-red mb-4 leading-tight">
+                    Nhujala <br class="md:hidden" />
+                    <span class="text-brand-gold text-4xl md:text-6xl mx-4">&</span> <br class="md:hidden" />
+                    Ankit
+                </h2>
+                <p class="text-sm md:text-base tracking-[0.1em] text-gray-500 mb-10 max-w-md mx-auto leading-relaxed">
+                    (we) invite you to celebrate our wedding.
+                </p>
+            </div>
+
+            <div class="fade-in-section" style="transition-delay: 400ms;">
+                <div
+                    class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-brand-red font-medium tracking-widest uppercase">
+                    <div class="flex flex-col items-center">
+                        <i data-lucide="calendar" class="w-6 h-6 mb-2 text-brand-gold"></i>
+                        <span>28 Falgun 2082</span>
+                    </div>
+                    <div class="hidden md:block w-px h-12 bg-brand-gold/40"></div>
+                    <div class="flex flex-col items-center">
+                        <i data-lucide="clock" class="w-6 h-6 mb-2 text-brand-gold"></i>
+                        <span>12:30 PM</span>
+                    </div>
+                    <div class="hidden md:block w-px h-12 bg-brand-gold/40"></div>
+                    <div class="flex flex-col items-center">
+                        <i data-lucide="map-pin" class="w-6 h-6 mb-2 text-brand-gold"></i>
+                        <span class="text-center">Barki Banquet<br /><span class="text-xs text-gray-500">Babarmahal,
+                                Ktm</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 animate-bounce">
+                <i data-lucide="chevron-down" class="w-6 h-6 text-brand-gold"></i>
+            </div>
+        </section>
+
+        <!-- TRADITIONAL BLESSING & INVITATION -->
+        <section class="py-20 px-6 max-w-3xl mx-auto text-center">
+            <div class="fade-in-section">
+                <h3 class="font-cinzel text-3xl md:text-4xl text-brand-red mb-6">
+                    ।। श्री गणेशाय नमः ।।
+                </h3>
+                <div class="flex items-center justify-center mb-12">
+                    <div class="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent w-32"></div>
+                    <i data-lucide="heart" class="w-4 h-4 text-brand-gold mx-4 fill-brand-gold"></i>
+                    <div class="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent w-32"></div>
+                </div>
+            </div>
+
+            <div class="fade-in-section" style="transition-delay: 200ms;">
+                <div class="space-y-6 text-gray-600 leading-loose md:text-lg">
+                    <p>With the grace of the divine and the blessings of family,</p>
+
+                    <div class="py-4">
+                        <p class="font-cinzel font-semibold text-xl text-gray-800">Shree. Rabin Shrestha</p>
+                        <p class="text-sm italic text-brand-gold">and</p>
+                        <p class="font-cinzel font-semibold text-xl text-gray-800">Shrimati. Leena Pote</p>
+                    </div>
+
+                    <p>cordially invite you to join us in celebrating the wedding of our beloved daughter</p>
+
+                    <div class="py-6">
+                        <p class="font-cinzel text-3xl md:text-4xl text-brand-red">Nhujala Sainju</p>
+                        <p class="text-sm italic text-brand-gold my-2">with</p>
+                        <p class="font-cinzel text-3xl md:text-4xl text-brand-red">Ankit Shrestha</p>
+                    </div>
+
+                    <p class="pt-4">Your presence and blessings will make this occasion even more meaningful.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COUNTDOWN SECTION -->
+        <section class="py-16 bg-brand-red text-white text-center px-6">
+            <div class="fade-in-section">
+                <h3 class="font-cinzel text-2xl md:text-3xl mb-10 text-white/90">
+                    Counting down to our wedding day (28 Falgun 2082)
+                </h3>
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8 max-w-2xl mx-auto">
+                    <div class="flex flex-col items-center w-20 md:w-28">
+                        <div
+                            class="w-full aspect-square rounded-lg border border-brand-gold/50 bg-black/10 backdrop-blur-sm flex items-center justify-center mb-3">
+                            <span id="cd-days" class="font-cinzel text-3xl md:text-5xl font-medium">0</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest text-brand-gold">Days</span>
+                    </div>
+                    <div class="flex flex-col items-center w-20 md:w-28">
+                        <div
+                            class="w-full aspect-square rounded-lg border border-brand-gold/50 bg-black/10 backdrop-blur-sm flex items-center justify-center mb-3">
+                            <span id="cd-hours" class="font-cinzel text-3xl md:text-5xl font-medium">0</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest text-brand-gold">Hours</span>
+                    </div>
+                    <div class="flex flex-col items-center w-20 md:w-28">
+                        <div
+                            class="w-full aspect-square rounded-lg border border-brand-gold/50 bg-black/10 backdrop-blur-sm flex items-center justify-center mb-3">
+                            <span id="cd-minutes" class="font-cinzel text-3xl md:text-5xl font-medium">0</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest text-brand-gold">Minutes</span>
+                    </div>
+                    <div class="flex flex-col items-center w-20 md:w-28">
+                        <div
+                            class="w-full aspect-square rounded-lg border border-brand-gold/50 bg-black/10 backdrop-blur-sm flex items-center justify-center mb-3">
+                            <span id="cd-seconds" class="font-cinzel text-3xl md:text-5xl font-medium">0</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest text-brand-gold">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEDDING DETAILS CARD -->
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <div class="fade-in-section">
+                    <div
+                        class="border border-brand-gold/30 p-8 md:p-12 text-center relative overflow-hidden bg-brand-cream">
+                        <div
+                            class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-brand-gold m-4 opacity-50">
+                        </div>
+                        <div
+                            class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-brand-gold m-4 opacity-50">
+                        </div>
+
+                        <h3 class="font-cinzel text-3xl text-brand-red mb-8">Wedding Ceremony</h3>
+
+                        <div class="grid md:grid-cols-3 gap-8 text-gray-700">
+                            <div class="flex flex-col items-center">
+                                <i data-lucide="calendar" class="w-8 h-8 text-brand-gold mb-4 stroke-[1.5]"></i>
+                                <span class="font-semibold uppercase tracking-wider mb-1">Date</span>
+                                <span>28 Falgun 2082</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <i data-lucide="clock" class="w-8 h-8 text-brand-gold mb-4 stroke-[1.5]"></i>
+                                <span class="font-semibold uppercase tracking-wider mb-1">Time</span>
+                                <span>12:30 PM Onwards</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <i data-lucide="map-pin" class="w-8 h-8 text-brand-gold mb-4 stroke-[1.5]"></i>
+                                <span class="font-semibold uppercase tracking-wider mb-1">Venue</span>
+                                <span>Barki Banquet</span>
+                                <span class="text-sm text-gray-500">Babarmahal, Kathmandu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAMILY DETAILS -->
+        <section class="py-20 px-6 max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 md:gap-8">
+                <!-- Bride's Side -->
+                <div class="fade-in-section text-center">
+                    <h3
+                        class="font-cinzel text-2xl text-brand-red mb-8 pb-4 border-b border-brand-gold/30 inline-block px-8">
+                        Bride's Family (Hosted By)
+                    </h3>
+
+                    <div class="space-y-8 text-gray-700">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Parents</p>
+                            <p class="font-medium text-lg">Roshan Shrestha & Rajana Shrestha</p>
+                            <p class="font-medium text-lg">Rabin Shrestha & Leena Pote</p>
+                            <p class="font-medium text-lg">Captain Ramesh Shrestha & Lila Maskey Shrestha</p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Maternal Grandparents</p>
+                            <p class="font-medium">Ishwor Lal Pote Shrestha</p>
+                            <p class="font-medium">Padmadevi Pote Shrestha</p>
+                        </div>
+
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Siblings</p>
+                            <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm md:text-base">
+                                <span>Rajat Sainju</span>
+                                <span class="text-brand-gold">•</span>
+                                <span>Raunak Sainju</span>
+                                <span class="text-brand-gold">•</span>
+                                <span>Supriya Sainju</span>
+                                <span class="text-brand-gold">•</span>
+                                <span>Rani Shrestha</span>
+                                <span class="text-brand-gold">•</span>
+                                <span>Pratham Shrestha</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Groom's Side -->
+                <div class="fade-in-section text-center h-full flex flex-col" style="transition-delay: 200ms;">
+                    <h3
+                        class="font-cinzel text-2xl text-brand-red mb-8 pb-4 border-b border-brand-gold/30 inline-block px-8">
+                        Groom's Family
+                    </h3>
+
+                    <div class="space-y-8 text-gray-700 flex-grow flex flex-col justify-center">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Parents</p>
+                            <p class="font-medium text-lg">Ranjit Kumar Shrestha</p>
+                            <p class="font-medium text-lg">Anupama Shrestha</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENUE & LOCATION -->
+        <section class="py-20 bg-gray-50 border-y border-gray-200 px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="fade-in-section">
+                    <h3 class="font-cinzel text-3xl text-brand-red mb-4">Venue Location</h3>
+                    <p class="text-gray-600 mb-8 font-medium text-lg">
+                        Barki Banquet, Babarmahal, Kathmandu
+                    </p>
+
+                    <div class="flex flex-col items-center justify-center gap-6 mb-10">
+                        <div
+                            class="w-40 h-40 bg-white p-4 shadow-sm border border-gray-200 rounded-lg flex items-center justify-center relative">
+                            <!-- Decorative QR Code -->
+                            <img src="location_qr.png" alt="Venue location QR code"
+                                class="w-full h-full object-contain">
+                        </div>
+                    </div>
+
+                    <a href="https://share.google/OOr2FUx0p3rZbpZnz" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center px-8 py-3 bg-brand-red text-white rounded-full hover:bg-[#8A0E1D] transition-colors shadow-md">
+                        <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>
+                        <span class="uppercase tracking-wider text-sm font-medium">Get Directions</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTIONS (SHARE, MEMORIES, DOWNLOAD) -->
+        <section class="py-20 px-6">
+            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+                <div class="fade-in-section" style="transition-delay: 100ms;">
+                    <div
+                        class="bg-white p-8 rounded-2xl text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 h-full flex flex-col items-center justify-between">
+                        <div class="w-full">
+                            <div
+                                class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-4 text-brand-red">
+                                <i data-lucide="share-2" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-cinzel font-semibold text-lg mb-2">Share Invitation</h4>
+                            <p class="text-sm text-gray-500 mb-6">Share this invitation with family and friends.</p>
+                        </div>
+                        <button id="btn-share"
+                            class="w-full py-3 rounded-full border border-brand-red text-brand-red hover:bg-brand-red hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">
+                            Share via WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <div class="fade-in-section" style="transition-delay: 200ms;">
+                    <div
+                        class="bg-white p-8 rounded-2xl text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-brand-gold/30 h-full flex flex-col items-center justify-between relative overflow-hidden">
+                        <div class="absolute inset-0 bg-[#D4AF37]/5"></div>
+                        <div class="relative z-10 w-full">
+                            <div
+                                class="w-12 h-12 rounded-full bg-yellow-50 flex items-center justify-center mx-auto mb-4 text-brand-gold">
+                                <i data-lucide="camera" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-cinzel font-semibold text-lg mb-2">Wedding Memories</h4>
+                            <p class="text-sm text-gray-500 mb-6">Help us capture the moment. Upload photos here.</p>
+                            <a href="https://drive.google.com/drive/folders/1TxFT293AF1MjSNwsGFCI6KZGncat-esk"
+                                target="_blank" rel="noopener noreferrer"
+                                class="block w-full py-3 rounded-full bg-brand-gold text-white hover:bg-[#C5A028] transition-colors text-sm uppercase tracking-wider font-medium">
+                                Upload Photos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in-section" style="transition-delay: 300ms;">
+                    <div
+                        class="bg-white p-8 rounded-2xl text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 h-full flex flex-col items-center justify-between">
+                        <div class="w-full">
+                            <div
+                                class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-4 text-brand-red">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-cinzel font-semibold text-lg mb-2">Save Offline</h4>
+                            <p class="text-sm text-gray-500 mb-6">Download a copy of the invitation card.</p>
+                        </div>
+                        <a href="invitation.jpg" id="btn-download-card" download
+                            class="w-full py-3 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors text-sm uppercase tracking-wider font-medium flex items-center justify-center gap-2">
+                            <i data-lucide="download" class="w-4 h-4"></i> Download Card
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT INFO -->
+        <section class="py-12 px-6">
+            <div class="fade-in-section">
+                <div class="max-w-2xl mx-auto text-center">
+                    <i data-lucide="phone" class="w-6 h-6 text-brand-gold mx-auto mb-4"></i>
+                    <h4 class="font-cinzel text-xl text-brand-red mb-4">For Inquiries</h4>
+                    <div class="flex flex-wrap justify-center gap-4 text-gray-600 font-medium">
+                        <a href="tel:9841230600" class="hover:text-brand-red transition-colors">9841230600</a>
+                        <span class="text-brand-gold">•</span>
+                        <a href="tel:9851013865" class="hover:text-brand-red transition-colors">9851013865</a>
+                        <span class="text-brand-gold">•</span>
+                        <a href="tel:9851025954" class="hover:text-brand-red transition-colors">9851025954</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOSING & FOOTER -->
+        <footer class="bg-brand-red text-white pt-20 pb-10 px-6 text-center mt-10">
+            <div class="fade-in-section max-w-2xl mx-auto">
+                <i data-lucide="heart" class="w-8 h-8 text-brand-gold mx-auto mb-6 fill-brand-gold"></i>
+                <p class="text-lg md:text-xl font-light leading-relaxed mb-4 text-white/90">
+                    We look forward to celebrating this beautiful moment with you.
+                </p>
+                <p class="text-sm md:text-base font-light text-brand-gold mb-16">
+                    Your presence and blessings will make our wedding day truly special.
+                </p>
+
+                <div class="w-full h-px bg-white/20 mb-10"></div>
+
+                <h2 class="font-cinzel text-3xl mb-2 text-brand-gold">Nhujala & Ankit</h2>
+                <p class="tracking-widest uppercase text-xs opacity-70 mb-4">Falgun 2082</p>
+                <p class="text-[10px] uppercase tracking-widest opacity-50">
+                    Digital Wedding Invitation
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // --- DOM ELEMENTS ---
+        const introScreen = document.getElementById('intro-screen');
+        const mainContent = document.getElementById('main-content');
+        const floatingControls = document.getElementById('floating-controls');
+        const btnOpen = document.getElementById('btn-open');
+        const audioEl = document.getElementById('bg-audio');
+        const musicBtns = document.querySelectorAll('.btn-music');
+        const btnShare = document.getElementById('btn-share');
+        const btnDownloadCard = document.getElementById('btn-download-card');
+
+        let isPlaying = false;
+
+        // --- ENTRY SCREEN LOGIC ---
+        btnOpen.addEventListener('click', () => {
+            // Hide intro screen
+            introScreen.classList.add('opacity-0', 'pointer-events-none', '-translate-y-full');
+            // Show main content & floating controls
+            mainContent.classList.remove('opacity-0', 'h-0', 'overflow-hidden');
+            mainContent.classList.add('opacity-100');
+            floatingControls.classList.remove('opacity-0', 'pointer-events-none');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Optional Autoplay Audio
+            if (!isPlaying) {
+                audioEl.play().then(() => {
+                    isPlaying = true;
+                    updateAudioIcons();
+                }).catch(() => {
+                    // Browser prevented autoplay
+                });
+            }
+        });
+
+        // --- AUDIO TOGGLE LOGIC ---
+        function updateAudioIcons() {
+            musicBtns.forEach(btn => {
+                const iconPaused = btn.querySelector('.icon-paused');
+                const iconPlaying = btn.querySelector('.icon-playing');
+                if (isPlaying) {
+                    iconPaused.classList.add('hidden');
+                    iconPlaying.classList.remove('hidden');
+                    iconPlaying.classList.add('block');
+                } else {
+                    iconPaused.classList.remove('hidden');
+                    iconPaused.classList.add('block');
+                    iconPlaying.classList.add('hidden');
+                }
+            });
+        }
+
+        musicBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent open logic if clicked on intro screen
+                if (isPlaying) {
+                    audioEl.pause();
+                } else {
+                    audioEl.play();
+                }
+                isPlaying = !isPlaying;
+                updateAudioIcons();
+            });
+        });
+
+        // --- SHARE LOGIC ---
+        btnShare.addEventListener('click', () => {
+            const text = encodeURIComponent("You are cordially invited to the wedding of Nhujala & Ankit on 28 Falgun 2082. Join us to celebrate this beautiful moment!");
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        });
+
+        // --- DOWNLOAD CARD (FORCE FILE DOWNLOAD WITHOUT NAVIGATION) ---
+        if (btnDownloadCard) {
+            btnDownloadCard.addEventListener('click', async (e) => {
+                e.preventDefault();
+                try {
+                    const response = await fetch('invitation.jpg');
+                    if (!response.ok) return window.location.href = 'invitation.jpg';
+
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Wedding_Invitation.jpg';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    URL.revokeObjectURL(url);
+                } catch {
+                    window.location.href = 'invitation.jpg';
+                }
+            });
+        }
+
+        // --- COUNTDOWN LOGIC ---
+        // 28 Falgun 2082 roughly aligns with March 12, 2026.
+        const targetDate = new Date('March 12, 2026 12:30:00').getTime();
+        const daysEl = document.getElementById('cd-days');
+        const hoursEl = document.getElementById('cd-hours');
+        const minutesEl = document.getElementById('cd-minutes');
+        const secondsEl = document.getElementById('cd-seconds');
+
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                daysEl.innerText = Math.floor(difference / (1000 * 60 * 60 * 24));
+                hoursEl.innerText = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                minutesEl.innerText = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                secondsEl.innerText = Math.floor((difference % (1000 * 60)) / 1000);
+            } else {
+                clearInterval(countdownInterval);
+                daysEl.innerText = 0; hoursEl.innerText = 0; minutesEl.innerText = 0; secondsEl.innerText = 0;
+            }
+        }, 1000);
+
+        // --- SCROLL ANIMATIONS (INTERSECTION OBSERVER) ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeSections = document.querySelectorAll('.fade-in-section');
+            fadeSections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+    </script>
+</body>
+
+</html>
